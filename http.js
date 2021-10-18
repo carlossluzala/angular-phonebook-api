@@ -36,8 +36,10 @@ app.get('/contatos', function (req, res) {
 });
 
 app.post('/contatos', function (req, res) {
-  var contato = req.body;
-  contatos.push(JSON.parse(contato));
+
+  var contato = JSON.parse(req.body)
+
+  contatos.push({...contato, data: new Date()});
   res.end();
 });
 
